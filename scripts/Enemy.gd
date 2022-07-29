@@ -15,6 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rotate(.05)
+	position.x += 0.3
 	
 func spawn_bullets():
 	var b1 = bullet_node.instance()
