@@ -8,15 +8,40 @@ var bullet_node = load("res://scenes/Bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Timer.set_wait_time(.6)
+	$Timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotate(.1)
+	rotate(.05)
 	
-	var b = bullet_node.instance()
-	b.position = self.position
-	b.rotation = self.rotation
+func spawn_bullets():
+	var b1 = bullet_node.instance()
+	b1.position = self.position
+	b1.rotation = self.rotation
+	b1.dir = Vector2(1,0)
 	
-	get_parent().add_child(b)
+	var b2 = bullet_node.instance()
+	b2.position = self.position
+	b2.rotation = self.rotation
+	b2.dir = Vector2(0,1)
+	
+	var b3 = bullet_node.instance()
+	b3.position = self.position
+	b3.rotation = self.rotation
+	b3.dir = Vector2(-1,0)
+	
+	var b4 = bullet_node.instance()
+	b4.position = self.position
+	b4.rotation = self.rotation
+	b4.dir = Vector2(0,-1)
+	
+	get_parent().add_child(b1)
+	get_parent().add_child(b2)
+	get_parent().add_child(b3)
+	get_parent().add_child(b4)
+
+
+func timeout():
+	spawn_bullets()
