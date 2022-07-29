@@ -6,6 +6,8 @@ extends Node2D
 # var b = "text"
 var bullet_node = load("res://scenes/Bullet.tscn")
 
+onready var player = get_parent().get_node("Player")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.set_wait_time(.6)
@@ -14,34 +16,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotate(.05)
-	position.x += 0.3
-	
+	rotate(delta)
+
 func spawn_bullets():
 	var b1 = bullet_node.instance()
 	b1.position = self.position
-	b1.rotation = self.rotation
-	b1.dir = Vector2(1,0)
-	
-	var b2 = bullet_node.instance()
-	b2.position = self.position
-	b2.rotation = self.rotation
-	b2.dir = Vector2(0,1)
-	
-	var b3 = bullet_node.instance()
-	b3.position = self.position
-	b3.rotation = self.rotation
-	b3.dir = Vector2(-1,0)
-	
-	var b4 = bullet_node.instance()
-	b4.position = self.position
-	b4.rotation = self.rotation
-	b4.dir = Vector2(0,-1)
+	b1.dir = Vector2(player.position.x - self.position.x, player.position.y - self.position.y).normalized()
 	
 	get_parent().add_child(b1)
-	get_parent().add_child(b2)
-	get_parent().add_child(b3)
-	get_parent().add_child(b4)
 
 
 func timeout():
