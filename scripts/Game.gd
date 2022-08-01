@@ -1,10 +1,13 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var health_status = [
+	"THE CREW HAS BEEN LOST",
+	"YOUR SHIP IS FALLING APART",
+	"ALL SYSTEMS ARE FAILING",
+	"YOUR SHIP HULL HAS BEEN BREACHED",
+	"YOUR SHIP IS LIGHTLY DAMAGED",
+	"YOUR SHIP IS AT FULL HEALTH"
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
