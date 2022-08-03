@@ -21,6 +21,8 @@ func _process(delta):
 			if (collid.health > 0):
 				collid.health -= 1
 				collid.advance_status()
+				if (collid.health == 0):
+					collid.die()
 		
 
 func screen_exited():

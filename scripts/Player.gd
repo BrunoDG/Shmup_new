@@ -1,11 +1,9 @@
 extends Node2D
 
-
 var type = "PLAYER"
-
 var health = 5
-
 var p_bullet = load("res://scenes/P_bullet.tscn")
+var is_alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +21,8 @@ func _process(delta):
 
 func advance_status():
 	get_parent().get_node("Label").text = get_parent().health_status[health]
+
+func die():
+	is_alive = false
+	self.queue_free()
+	get_parent().get_node("Label").text += "\n\nPress any key to continue"

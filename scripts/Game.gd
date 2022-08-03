@@ -9,11 +9,18 @@ var health_status = [
 	"YOUR SHIP IS AT FULL HEALTH"
 ]
 
+onready var player = load("res://scenes/Player.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	
+func _process(delta):
+	if (get_node_or_null("Player") == null):
+		_restart_game()
+	
+func _restart_game():
+	if(Input.is_mouse_button_pressed(BUTTON_LEFT)):
+		print("Restarting the game...")
+		get_tree().reload_current_scene()
+		queue_free()

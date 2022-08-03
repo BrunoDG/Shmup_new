@@ -13,6 +13,15 @@ func _ready():
 func _process(delta):
 	self.position -= dir * delta * bullet_speed
 	
+	if ($RayCast2D.is_colliding()):
+		var collid = $RayCast2D.get_collider().get_parent()
+		if(collid.type == "ENEMY"):
+			position += Vector2(-2000,-2000)
+		
+			if (collid.health > 0):
+				collid.health -= 1
+				if (collid.health == 0):
+					collid.die()
 	
 
 func screen_exited():

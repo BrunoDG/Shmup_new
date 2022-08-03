@@ -6,7 +6,7 @@ onready var player = get_parent().get_parent().get_node("Player")
 
 var type = "ENEMY"
 
-
+var health = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,3 +34,6 @@ func spawn_bullets():
 
 func timeout():
 	spawn_bullets()
+
+func die():
+	self.queue_free()

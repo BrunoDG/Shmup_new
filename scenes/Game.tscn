@@ -29,8 +29,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "YOUR SHIP IS AT FULL HEALTH"
-align = 1
-valign = 1
+text = "Health: "
+valign = 2
 
 [connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="timeout"]

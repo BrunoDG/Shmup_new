@@ -3,7 +3,7 @@ extends Node2D
 var enemy_node = load("res://scenes/ENemy.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.set_wait_time(1)
+	$Timer.set_wait_time(2)
 	$Timer.start()
 
 
