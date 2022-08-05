@@ -5,7 +5,7 @@
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource( 2 )
-bullet_speed = 600
+bullet_speed = 500
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )

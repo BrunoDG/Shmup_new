@@ -23,7 +23,6 @@ func _process(delta):
 				collid.advance_status()
 				if (collid.health == 0):
 					collid.die()
-		
 
 func screen_exited():
 	get_parent().remove_child(self)

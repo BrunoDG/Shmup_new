@@ -17,7 +17,7 @@ func _process(delta):
 		var collid = $RayCast2D.get_collider().get_parent()
 		if(collid.type == "ENEMY"):
 			position += Vector2(-2000,-2000)
-		
+			
 			if (collid.health > 0):
 				collid.health -= 1
 				if (collid.health == 0):
