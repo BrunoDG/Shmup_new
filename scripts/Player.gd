@@ -8,6 +8,8 @@ var p_bullet = load("res://scenes/P_bullet.tscn")
 var is_alive = true
 var type = "PLAYER"
 var velocity = Vector2(0,0)
+var currentControl = "MOUSE"
+var rush_enemies = true
 
 export (int) var speed = 10
 export var fireDelay: float = 0.2
@@ -18,11 +20,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	#self.position = get_global_mouse_position()
-	self.position += velocity 
-	keyboard_movement()
-	if (Input.is_action_pressed("mouse_shoot") or Input.is_key_pressed(KEY_SPACE)) and fireDelayTimer.is_stopped():
-		shoot_bullets()
+	if currentControl == "KEYBOARD":
+		self.position += velocity 
+		keyboard_movement()
+		if (Input.is_key_pressed(KEY_SPACE) and fireDelayTimer.is_stopped()):
+			shoot_bullets()
+	if currentControl == "MOUSE":
+		self.position = get_global_mouse_position()
+		if (Input.is_action_pressed("mouse_shoot")and fireDelayTimer.is_stopped()):
+			shoot_bullets()
 
 func shoot_bullets():
 	fireDelayTimer.start(fireDelay)

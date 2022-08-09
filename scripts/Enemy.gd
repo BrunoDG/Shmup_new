@@ -1,12 +1,12 @@
 extends Node2D
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 onready var bullet_node = load("res://scenes/Bullet.tscn")
 
 onready var player = get_parent().get_parent().get_node("Player")
+onready var spawn = get_parent().get_parent().get_node("EnemySpawn")
 
 var type = "ENEMY"
 var is_alive = true
@@ -36,6 +36,9 @@ func die():
 	is_alive = false
 	if(is_instance_valid(player)):
 		player.score()
+	spawn.count += 1
+	if (spawn.count % 5 == 0 and spawn.count > 0):
+		spawn.rush = true
 	self.queue_free()
 
 func timeout():
